@@ -3,7 +3,7 @@ const KV_BUCKET_URL = "https://kvdb.io/K99b6BBN2x58pC6SUpXN9U/acca_es_workspaces
 
 // Default pre-seeded markets tailored specifically for the ES/LATAM division
 const defaultMarkets = [
-  {name:"España", city:"Madrid", code:"es", img:"https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200", url:"#", custom:false},
+  {name:"España", city:"Madrid", code:"es", img:"https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200", url:"https://collaborative-bmc.vercel.app/canvas/nfb5e8rhmzpv0b704d514oxnohw8dwz8", custom:false},
   {name:"Argentina", city:"Buenos Aires", code:"ar", img:"https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200", url:"#", custom:false},
   {name:"México", city:"CDMX", code:"mx", img:"https://images.unsplash.com/photo-1512813583145-baaa340ef29f?w=1200", url:"#", custom:false}
 ];
