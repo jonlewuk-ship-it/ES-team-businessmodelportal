@@ -6,56 +6,109 @@
 <title>ACCA Portal de Negocios ES</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#ffd400;--blue:#43b8ff;--bg:#050811;--glass:rgba(18,27,44,.45);--glass-hover:rgba(26,38,62,.65);--border:rgba(255,255,255,.08);}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{background:radial-gradient(circle at 10% 10%,rgba(67,184,255,.12),transparent 40%),radial-gradient(circle at 90% 10%,rgba(255,212,0,.06),transparent 40%),linear-gradient(180deg,#03060f,#070d18,#020306);color:#fff;min-height:100vh;overflow-x:hidden;position:relative;padding-bottom:120px;-webkit-font-smoothing:antialiased;}
-header{padding:50px 60px 20px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);background:rgba(3,6,15,0.4);backdrop-filter:blur(10px);}
-.brand-group{display:flex;flex-direction:column;gap:4px;}
-.logo{font-size:42px;font-weight:900;color:var(--gold);text-shadow:0 0 30px rgba(255,212,0,.3);letter-spacing:-1.5px;line-height:1;margin-bottom:8px;}
-h1{font-weight:800;font-size:28px;letter-spacing:-0.5px;color:#fff;}
-.subtitle{opacity:.8;font-weight:500;color:#b4c7e7;font-size:14px;text-transform:uppercase;letter-spacing:1px;}
-.ops-panel{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:16px;padding:16px 24px;display:flex;align-items:center;gap:24px;max-width:650px;backdrop-filter:blur(8px);}
-.ops-info{display:flex;flex-direction:column;gap:4px;}
-.ops-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);}
-.ops-desc{font-size:13px;color:#8da2bf;line-height:1.4;}
-.ops-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(67,184,255,0.15),rgba(67,184,255,0.05));border:1px solid rgba(67,184,255,0.3);padding:10px 18px;border-radius:20px;color:#43b8ff;text-decoration:none;font-weight:600;font-size:13px;transition:all 0.25s ease;}
-.search-container{padding:30px 60px 10px;display:flex;justify-content:flex-end;}
-.search{padding:14px 24px;border-radius:40px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:#fff;width:320px;font-size:14px;transition:all 0.3s ease;backdrop-filter:blur(10px);}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;padding:10px 60px 70px;}
-.card-wrapper{position:relative;height:360px;}
-.card{display:block;position:relative;height:100%;border-radius:24px;overflow:hidden;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);transition:all .4s cubic-bezier(0.16,1,0.3,1);text-decoration:none;color:white;}
-.sky{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.35) contrast(1.05);transition:transform 0.8s;}
-.flag{position:absolute;top:24px;right:24px;width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.15);}
-.content{position:absolute;bottom:24px;left:24px;right:24px;}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,0.06);color:#fff;font-weight:600;font-size:13px;width:100%;}
-.add-country-btn{position:fixed;bottom:35px;right:45px;z-index:100;padding:14px 26px;border-radius:30px;background:rgba(10,17,32,0.75);border:1px solid var(--border);color:#fff;font-weight:600;cursor:pointer;}
-.delete-card-btn{position:absolute;top:20px;left:20px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(255,77,77,0.1);color:#ff9999;border:none;cursor:pointer;}
+:root {
+  --gold: #ffd400;
+  --blue: #43b8ff;
+  --bg: #050811;
+  --glass: rgba(18,27,44,.6);
+  --border: rgba(255,255,255,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; font-family:Inter,sans-serif; }
+body { 
+  background: linear-gradient(180deg,#03060f,#070d18,#020306); 
+  color: #fff; 
+  min-height: 100vh; 
+  padding-bottom: 120px; 
+}
+header { 
+  padding: 60px 60px 30px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  border-bottom: 1px solid var(--border); 
+  background: rgba(3,6,15,0.3); 
+  backdrop-filter: blur(20px); 
+}
+.brand-group { display: flex; flex-direction: column; gap: 4px; }
+.logo { 
+  font-size: 56px; font-weight: 900; color: var(--gold); 
+  letter-spacing: -2px; text-shadow: 0 0 40px rgba(255,212,0,0.4); 
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+.logo:hover { transform: scale(1.05); }
+h1 { font-weight: 800; font-size: 28px; letter-spacing: -0.5px; }
+.subtitle { opacity: .8; font-weight: 500; color: #b4c7e7; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+.ops-panel { 
+  background: rgba(255,255,255,0.03); 
+  border: 1px solid var(--border); 
+  border-radius: 20px; 
+  padding: 20px; 
+  display: flex; 
+  align-items: center; 
+  gap: 24px; 
+}
+.ops-link { 
+  padding: 10px 18px; border-radius: 20px; background: rgba(67,184,255,0.1); 
+  color: #43b8ff; text-decoration: none; font-weight: 600; font-size: 13px; 
+  transition: all 0.3s ease; 
+}
+.ops-link:hover { background: var(--blue); color: #000; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 32px; padding: 40px 60px; }
+.card-wrapper { position: relative; height: 360px; }
+.card { 
+  display: block; height: 100%; border-radius: 24px; overflow: hidden; 
+  background: var(--glass); border: 1px solid var(--border); 
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.3s; 
+  text-decoration: none; color: white; position: relative; 
+}
+.card:hover { transform: translateY(-15px); border-color: var(--gold); }
+.sky { 
+  position: absolute; inset: 0; background-size: cover; background-position: center; 
+  filter: brightness(.35); transition: transform 0.8s; 
+}
+.card:hover .sky { transform: scale(1.1); }
+.flag { position: absolute; top: 24px; right: 24px; width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); }
+.content { position: absolute; bottom: 24px; left: 24px; right: 24px; }
+.btn { 
+  display: flex; align-items: center; justify-content: center; 
+  padding: 14px 24px; border-radius: 12px; border: 1px solid var(--border); 
+  background: rgba(255,255,255,0.03); color: #fff; font-weight: 600; font-size: 14px; 
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1); 
+}
+.card:hover .btn { background: var(--gold); color: #000; font-weight: 800; transform: scale(1.02); }
+.add-country-btn { 
+  position: fixed; bottom: 35px; right: 45px; padding: 14px 26px; 
+  border-radius: 30px; background: rgba(10,17,32,0.75); border: 1px solid var(--border); 
+  color: #fff; cursor: pointer; transition: 0.3s; 
+}
+.delete-card-btn { 
+  position: absolute; top: 20px; left: 20px; z-index: 10; width: 32px; height: 32px; 
+  border-radius: 50%; background: rgba(255,77,77,0.1); color: #ff9999; border: none; cursor: pointer; 
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="brand-group">
-<div class="logo">ACCA</div>
-<h1>Portal de Canvas de Modelo de Negocio</h1>
-<div class="subtitle">Workspace de Inteligencia Comercial ES</div>
-</div>
-<div class="ops-panel">
-<div class="ops-info">
-<span class="ops-title">ES-Team - Portal de Negocios</span>
-<span class="ops-desc">Selecciona un país para abrir su <strong>Business Model Canvas</strong>.</span>
-</div>
-<a href="https://acca-chat.usbim.com/group/coordinamento-internazionale-8ssz3cpd58m6bj6c2" target="_blank" class="ops-link">Soporte | Tony De Palma</a>
-</div>
+  <div class="brand-group">
+    <div class="logo">ACCA</div>
+    <h1>Portal de Canvas de Modelo de Negocio</h1>
+    <div class="subtitle">Workspace de Inteligencia Comercial ES</div>
+  </div>
+  <div class="ops-panel">
+    <div>
+      <span style="font-size:11px; color:var(--blue); font-weight:700;">ES-TEAM</span>
+      <div style="font-size:13px; color:#8da2bf;">Acceso a estrategias de mercado.</div>
+    </div>
+    <a href="https://acca-chat.usbim.com/group/coordinamento-internazionale-8ssz3cpd58m6bj6c2" target="_blank" class="ops-link">Soporte | Tony De Palma</a>
+  </div>
 </header>
-
-<div class="search-container">
-<input class="search" id="search" placeholder="Buscar país...">
-</div>
 
 <div class="grid" id="grid"></div>
 
-<button class="add-country-btn" id="addCountryBtn">Añadir Workspace</button>
+<button class="add-country-btn" id="addCountryBtn">+ Añadir Workspace</button>
 
 <script>
 const STATIC_FALLBACKS = [
@@ -66,24 +119,17 @@ const STATIC_FALLBACKS = [
 
 let data = [];
 const grid = document.getElementById('grid');
-const search = document.getElementById('search');
-const addBtn = document.getElementById('addCountryBtn');
 
 async function fetchWorkspaces() {
   try {
     const response = await fetch('/api/workspaces');
     data = response.ok ? await response.json() : STATIC_FALLBACKS;
-    render(search.value);
-  } catch (err) {
-    data = STATIC_FALLBACKS;
-    render(search.value);
-  }
+    render();
+  } catch (err) { data = STATIC_FALLBACKS; render(); }
 }
 
-function render(filter = ""){
-  grid.innerHTML = data
-    .filter(d => d.name.toLowerCase().includes(filter.toLowerCase()))
-    .map((d, index) => `
+function render() {
+  grid.innerHTML = data.map((d, index) => `
     <div class="card-wrapper">
       ${d.custom ? `<button class="delete-card-btn" onclick="deleteCountry(${index}, '${d.name}')">&times;</button>` : ''}
       <a class="card" href="${d.url}" target="_blank">
@@ -91,7 +137,7 @@ function render(filter = ""){
         <img class="flag" src="https://flagcdn.com/w320/${d.code.toLowerCase()}.png">
         <div class="content">
           <h2>${d.name}</h2>
-          <div class="city" style="color:#8da2bf; margin-bottom:15px;">${d.city}</div>
+          <div style="color:#8da2bf; margin: 4px 0 15px;">${d.city}</div>
           <div class="btn">Abrir Workspace &rarr;</div>
         </div>
       </a>
@@ -99,22 +145,21 @@ function render(filter = ""){
 }
 
 window.deleteCountry = async (index, name) => {
-  if(confirm(`¿Eliminar workspace de ${name}?`)) {
+  if(confirm(`¿Eliminar ${name}?`)) {
     await fetch(`/api/workspaces?index=${index}`, { method: 'DELETE' });
     location.reload();
   }
 };
 
-addBtn.onclick = async () => {
+document.getElementById('addCountryBtn').onclick = async () => {
   const name = prompt("Nombre del País:");
   if(!name) return;
-  const newWorkspace = { name, city: prompt("Ciudad:"), code: prompt("Código (es, ar, mx):"), img: prompt("URL de Imagen:"), url: prompt("URL de Canvas:"), custom: true };
+  const newWorkspace = { name, city: prompt("Ciudad:"), code: prompt("Código (es, ar, mx):"), img: prompt("URL Imagen:"), url: prompt("URL Canvas:"), custom: true };
   await fetch('/api/workspaces', { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(newWorkspace) });
   location.reload();
 };
 
 fetchWorkspaces();
-search.oninput = e => render(e.target.value);
 </script>
 </body>
 </html>
