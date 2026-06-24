@@ -1,183 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ES TEAM Strategic Operations Control Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --brand-yellow: #FFDD00;
-            --dark-bg: #0d0e12;
-            --card-bg: #161920;
-            --text-main: #ffffff;
-            --text-muted: #a0aec0;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--dark-bg); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-        header { padding: 30px; max-width: 1400px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
-        h1 span { color: var(--brand-yellow); }
-        .controls { display: flex; gap: 15px; align-items: center; }
-        .search-bar { background: #1e222b; border: 1px solid #2d3139; padding: 10px 15px; border-radius: 6px; color: white; width: 250px; font-size: 14px; }
-        .search-bar:focus { outline: 1px solid var(--brand-yellow); }
-        .add-btn { background: var(--brand-yellow); color: #000; border: none; padding: 10px 20px; font-weight: 600; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: transform 0.2s; }
-        .add-btn:hover { transform: translateY(-1px); }
-        .main-container { flex: 1; max-width: 1400px; width: 100%; margin: 0 auto; padding: 0 30px 6px 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; position: relative; border: 1px solid #222630; height: 240px; display: block; text-decoration: none; transition: transform 0.3s, border-color 0.3s; }
-        .card:hover { transform: translateY(-4px); border-color: #3b4252; }
-        .sky { height: 100%; width: 100%; background-size: cover; background-position: center; transition: transform 0.5s; }
-        .card:hover .sky { transform: scale(1.05); }
-        .overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,14,18,0.95) 20%, rgba(13,14,18,0.4) 60%, rgba(13,14,18,0.1) 100%); }
-        .flag { position: absolute; top: 15px; left: 15px; width: 32px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); z-index: 2; }
-        .delete-btn { position: absolute; top: 15px; right: 15px; background: rgba(255, 68, 68, 0.2); border: none; color: #ff4444; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; font-weight: bold; font-size: 14px; opacity: 0; transition: opacity 0.2s, background 0.2s; }
-        .card:hover .delete-btn { opacity: 1; }
-        .delete-btn:hover { background: rgba(255, 68, 68, 0.6); color: white; }
-        .content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; z-index: 3; }
-        .content h2 { font-size: 20px; font-weight: 600; color: white; margin-bottom: 4px; }
-        .city { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .btn { display: inline-block; font-size: 13px; font-weight: 600; color: var(--brand-yellow); transition: color 0.2s; }
-        .card:hover .btn { color: white; }
-        footer { padding: 20px; border-top: 1px solid #1e222b; text-align: center; font-size: 12px; color: var(--text-muted); max-width: 1400px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; }
-        footer a { color: var(--brand-yellow); text-decoration: none; }
-        .loading, .error-msg { grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 15px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACCA Portal de Negocios ES</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#ffd400;--blue:#43b8ff;--bg:#050811;--glass:rgba(18,27,44,.45);--glass-hover:rgba(26,38,62,.65);--border:rgba(255,255,255,.08);}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:radial-gradient(circle at 10% 10%,rgba(67,184,255,.12),transparent 40%),radial-gradient(circle at 90% 10%,rgba(255,212,0,.06),transparent 40%),linear-gradient(180deg,#03060f,#070d18,#020306);color:#fff;min-height:100vh;overflow-x:hidden;position:relative;padding-bottom:120px;-webkit-font-smoothing:antialiased;}
+header{padding:50px 60px 20px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);background:rgba(3,6,15,0.4);backdrop-filter:blur(10px);}
+.brand-group{display:flex;flex-direction:column;gap:4px;}
+.logo{font-size:42px;font-weight:900;color:var(--gold);text-shadow:0 0 30px rgba(255,212,0,.3);letter-spacing:-1.5px;line-height:1;margin-bottom:8px;}
+h1{font-weight:800;font-size:28px;letter-spacing:-0.5px;color:#fff;}
+.subtitle{opacity:.8;font-weight:500;color:#b4c7e7;font-size:14px;text-transform:uppercase;letter-spacing:1px;}
+.ops-panel{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:16px;padding:16px 24px;display:flex;align-items:center;gap:24px;max-width:650px;backdrop-filter:blur(8px);}
+.ops-info{display:flex;flex-direction:column;gap:4px;}
+.ops-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);}
+.ops-desc{font-size:13px;color:#8da2bf;line-height:1.4;}
+.ops-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(67,184,255,0.15),rgba(67,184,255,0.05));border:1px solid rgba(67,184,255,0.3);padding:10px 18px;border-radius:20px;color:#43b8ff;text-decoration:none;font-weight:600;font-size:13px;transition:all 0.25s ease;}
+.search-container{padding:30px 60px 10px;display:flex;justify-content:flex-end;}
+.search{padding:14px 24px;border-radius:40px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:#fff;width:320px;font-size:14px;transition:all 0.3s ease;backdrop-filter:blur(10px);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;padding:10px 60px 70px;}
+.card-wrapper{position:relative;height:360px;}
+.card{display:block;position:relative;height:100%;border-radius:24px;overflow:hidden;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);transition:all .4s cubic-bezier(0.16,1,0.3,1);text-decoration:none;color:white;}
+.sky{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.35) contrast(1.05);transition:transform 0.8s;}
+.flag{position:absolute;top:24px;right:24px;width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.15);}
+.content{position:absolute;bottom:24px;left:24px;right:24px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,0.06);color:#fff;font-weight:600;font-size:13px;width:100%;}
+.add-country-btn{position:fixed;bottom:35px;right:45px;z-index:100;padding:14px 26px;border-radius:30px;background:rgba(10,17,32,0.75);border:1px solid var(--border);color:#fff;font-weight:600;cursor:pointer;}
+.delete-card-btn{position:absolute;top:20px;left:20px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(255,77,77,0.1);color:#ff9999;border:none;cursor:pointer;}
+</style>
 </head>
 <body>
 
 <header>
-    <h1>ES TEAM <span>Strategic Operations Control Hub</span></h1>
-    <div class="controls">
-        <input type="text" id="search" class="search-bar" placeholder="Buscar mercado internacional...">
-        <button id="addBtn" class="add-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            Añadir Espacio
-        </button>
-    </div>
+<div class="brand-group">
+<div class="logo">ACCA</div>
+<h1>Portal de Canvas de Modelo de Negocio</h1>
+<div class="subtitle">Workspace de Inteligencia Comercial ES</div>
+</div>
+<div class="ops-panel">
+<div class="ops-info">
+<span class="ops-title">ES-Team - Portal de Negocios</span>
+<span class="ops-desc">Selecciona un país para abrir su <strong>Business Model Canvas</strong>.</span>
+</div>
+<a href="https://acca-chat.usbim.com/group/coordinamento-internazionale-8ssz3cpd58m6bj6c2" target="_blank" class="ops-link">Soporte | Tony De Palma</a>
+</div>
 </header>
 
-<div class="main-container">
-    <div class="grid" id="grid">
-        <div class="loading">Cargando repositorios de espacios de trabajo de la división...</div>
-    </div>
+<div class="search-container">
+<input class="search" id="search" placeholder="Buscar país...">
 </div>
 
-<footer>
-    <div>&copy; 2026 ACCA software | Control Central Multi-Ecosistema</div>
-    <div>Soporte Técnico de Operaciones: <a href="mailto:support@acca.it">EN TEAM Hub</a></div>
-</footer>
+<div class="grid" id="grid"></div>
+
+<button class="add-country-btn" id="addCountryBtn">Añadir Workspace</button>
 
 <script>
+const STATIC_FALLBACKS = [
+  {name:"España", city:"Madrid", code:"es", img:"https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200", url:"https://collaborative-bmc.vercel.app/canvas/nfb5e8rhmzpv0b704d514oxnohw8dwz8", custom:false},
+  {name:"Argentina", city:"Buenos Aires", code:"ar", img:"https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200", url:"#", custom:false},
+  {name:"México", city:"CDMX", code:"mx", img:"https://images.unsplash.com/photo-1512813583145-baaa340ef29f?w=1200", url:"#", custom:false}
+];
+
+let data = [];
 const grid = document.getElementById('grid');
 const search = document.getElementById('search');
-const addBtn = document.getElementById('addBtn');
-let globalData = [];
+const addBtn = document.getElementById('addCountryBtn');
 
-async function loadWorkspaces() {
-    try {
-        const res = await fetch('/api/workspaces');
-        if (!res.ok) throw new Error("Fallo al inicializar datos del servidor.");
-        globalData = await res.json();
-        render();
-    } catch (err) {
-        grid.innerHTML = `<div class="error-msg">Error al comunicar con el repositorio del ES Team: ${err.message}</div>`;
-    }
+async function fetchWorkspaces() {
+  try {
+    const response = await fetch('/api/workspaces');
+    data = response.ok ? await response.json() : STATIC_FALLBACKS;
+    render(search.value);
+  } catch (err) {
+    data = STATIC_FALLBACKS;
+    render(search.value);
+  }
 }
 
-function render(filter = '') {
-    const term = filter.toLowerCase().trim();
-    let combinedHTML = '';
-
-    const filtered = globalData.filter(d => 
-        d.name.toLowerCase().includes(term) || 
-        d.city.toLowerCase().includes(term)
-    );
-
-    if (filtered.length === 0) {
-        grid.innerHTML = '<div class="loading">No se encontraron espacios de trabajo coincidentes.</div>';
-        return;
-    }
-
-    filtered.forEach((d, idx) => {
-        const realIndex = globalData.indexOf(d);
-        combinedHTML += `
-        <div class="card" style="position: relative;">
-            <button class="delete-btn" onclick="event.preventDefault(); deleteCountry(${realIndex}, '${d.name}')">&times;</button>
-            <a href="${d.url}" target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
-                <div class="sky" style="background-image:url('${d.img}')"></div>
-                <div class="overlay"></div>
-                <img class="flag" src="https://flagcdn.com/w320/${d.code.toLowerCase()}.png" onerror="this.src='https://flagcdn.com/w320/un.png'">
-                <div class="content">
-                    <h2>${d.name}</h2>
-                    <div class="city">Skyline de ${d.city}</div>
-                    <div class="btn">Iniciar Espacio &rarr;</div>
-                </div>
-            </a>
-        </div>`;
-    });
-
-    grid.innerHTML = combinedHTML;
+function render(filter = ""){
+  grid.innerHTML = data
+    .filter(d => d.name.toLowerCase().includes(filter.toLowerCase()))
+    .map((d, index) => `
+    <div class="card-wrapper">
+      ${d.custom ? `<button class="delete-card-btn" onclick="deleteCountry(${index}, '${d.name}')">&times;</button>` : ''}
+      <a class="card" href="${d.url}" target="_blank">
+        <div class="sky" style="background-image:url('${d.img}')"></div>
+        <img class="flag" src="https://flagcdn.com/w320/${d.code.toLowerCase()}.png">
+        <div class="content">
+          <h2>${d.name}</h2>
+          <div class="city" style="color:#8da2bf; margin-bottom:15px;">${d.city}</div>
+          <div class="btn">Abrir Workspace &rarr;</div>
+        </div>
+      </a>
+    </div>`).join("");
 }
 
 window.deleteCountry = async (index, name) => {
-    if (confirm(`¿Estás seguro de que deseas eliminar permanentemente el espacio de trabajo para ${name}?`)) {
-        try {
-            grid.innerHTML = '<div class="loading">Actualizando repositorio central...</div>';
-            const res = await fetch(`/api/workspaces?index=${index}`, { method: 'DELETE' });
-            if (!res.ok) throw new Error("Rechazo del servidor en operación de borrado.");
-            globalData = await res.json();
-            render(search.value);
-        } catch (err) {
-            alert(`Error al eliminar: ${err.message}`);
-            loadWorkspaces();
-        }
-    }
+  if(confirm(`¿Eliminar workspace de ${name}?`)) {
+    await fetch(`/api/workspaces?index=${index}`, { method: 'DELETE' });
+    location.reload();
+  }
 };
 
 addBtn.onclick = async () => {
-    const countryName = prompt("Introduce el nombre del País:");
-    if (!countryName) return;
-
-    const cityName = prompt("Introduce el nombre de la Ciudad/Capital:", "Ciudad Principal");
-    if (!cityName) return;
-
-    const countryCode = prompt("Introduce el código de país de 2 letras (ej. 'es', 'mx', 'co'):", "un").toLowerCase();
-    if (!countryCode) return;
-
-    const customLink = prompt("Introduce la URL del Espacio de Trabajo:", "#");
-    if (!customLink) return;
-
-    const bgImg = prompt("Introduce la URL de la Imagen de Fondo:");
-    const finalImg = bgImg ? bgImg : "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200";
-
-    const newWorkspace = {
-        name: countryName,
-        city: cityName,
-        code: countryCode,
-        img: finalImg,
-        url: customLink,
-        custom: true
-    };
-
-    try {
-        grid.innerHTML = '<div class="loading">Inyectando nuevo espacio en base de datos...</div>';
-        const res = await fetch('/api/workspaces', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newWorkspace)
-        });
-        if (!res.ok) throw new Error("El servidor rechazó guardar la entrada.");
-        globalData = await res.json();
-        render(search.value);
-    } catch (err) {
-        alert(`Error al guardar: ${err.message}`);
-        loadWorkspaces();
-    }
+  const name = prompt("Nombre del País:");
+  if(!name) return;
+  const newWorkspace = { name, city: prompt("Ciudad:"), code: prompt("Código (es, ar, mx):"), img: prompt("URL de Imagen:"), url: prompt("URL de Canvas:"), custom: true };
+  await fetch('/api/workspaces', { method: 'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(newWorkspace) });
+  location.reload();
 };
 
-// Initial trigger execution
-loadWorkspaces();
+fetchWorkspaces();
 search.oninput = e => render(e.target.value);
 </script>
 </body>
